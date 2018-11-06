@@ -37,19 +37,19 @@ public class MyBigNumber {
 
             // Xét vị trí của 2 chuỗi xem có >= 0 hay không
             if ((pos1 >= 0) || (pos2 >= 0)) {
-                c1 = s1.charAt(length1 - i - 1);
-                c2 = s2.charAt(length2 - i - 1);
+                c1 = s1.charAt(length1 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
+                c2 = s2.charAt(length2 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
             }
 
-            tong = (c1 - '0') + (c2 - '0') + nho;
-            result = (tong % 10) + result;
-            nho = tong / 10;
+            tong = (c1 - '0') + (c2 - '0') + nho;// chuyển kí tự thành số xong cộng cho số nhớ
+            result = (tong % 10) + result;// Lấy kết quả tổng ở trên chia lấy dư cho 10 và ghép vào chuỗi kết quả
+            nho = tong / 10;// Cập nhật lại số nhớ
         }
 
         if (nho >= 1) {
-            result = 1 + result;
+            result = 1 + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
         }
 
-        return result;
+        return result;// Trả về kết quả thu được
     }
 }
