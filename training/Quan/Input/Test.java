@@ -16,7 +16,7 @@ public class Test {
         System.out.print("2nd String: ");
         String s2 = sc.nextLine();
 
-        System.out.println((new MyBigNumber()).sum(s1,s2));
+        System.out.println("Sum of 2 nums is: "+(new MyBigNumber()).sum(s1,s2));
 
 
     }
