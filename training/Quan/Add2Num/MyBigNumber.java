@@ -26,8 +26,8 @@ public class MyBigNumber {
         int nho = 0;// Khởi tạo số nhớ = 0 để khi cộng sẽ có vài trường hợp lớn hơn 9
         int pos1 = 0;// Vị trí chuỗi s1
         int pos2 = 0;// Vị trí chuỗi s2
-        char c1 = '0';// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
-        char c2 = '0';// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
+        char c1;// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
+        char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
 
         // Lặp từ 0 đến max lần
@@ -36,9 +36,17 @@ public class MyBigNumber {
             pos2 = length2 - i - 1;// cập nhật lại vị trí chuỗi s2
 
             // Xét vị trí của 2 chuỗi xem có >= 0 hay không
-            if ((pos1 >= 0) || (pos2 >= 0)) {
-                c1 = s1.charAt(length1 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi s1
-                c2 = s2.charAt(length2 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi s2
+            if (pos1 >= 0) {
+                c1 = s1.charAt(length1 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
+
+            } else {
+                c1 = '0';
+            }
+
+            if (pos2 >= 0) {
+                c2 = s2.charAt(length2 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
+            } else {
+                c2 = '0';
             }
 
             tong = (c1 - '0') + (c2 - '0') + nho;// chuyển kí tự thành số xong cộng cho số nhớ
