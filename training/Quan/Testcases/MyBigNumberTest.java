@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  */
 
 public class MyBigNumberTest {
-    
+
     @Test
     public void testSum() {
         MyBigNumber mb = new MyBigNumber();
@@ -35,5 +35,14 @@ public class MyBigNumberTest {
 
         // Kiem tra ket qua
         assertEquals("Correct!", "1110", sum);
+    }
+
+    @Test
+    public void testSum_N_3() {
+        MyBigNumber mb = new MyBigNumber();
+        String sum = mb.sum("111111111111111111111111111111", "222222222222222222222222222222");
+
+        // Kiem tra ket qua
+        assertEquals("Correct!", "333333333333333333333333333333", sum);
     }
 }
