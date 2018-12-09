@@ -1,0 +1,80 @@
+html,body{
+	height:100%;
+	width:100%;
+}
+.navbar{
+	padding:10px;
+	background:	#9932CC;
+}
+.navbar-nav li a{
+	color:white;
+	margin:0px 30px 0px 30px;
+	text-decoration:none;
+	font-size:18px;
+
+}
+.navbar-nav li a:hover{
+	color:lightgrey;
+}
+#active{
+	border-bottom:5px solid 	#4B0082;
+}
+.navbar-brand{
+	padding:5px 5px;
+	text-decoration:none;
+}
+.navbar-brand p{
+	color:white;
+	text-shadow: 3px 3px black;
+	font-size:25px;
+}
+.navbar-brand p:hover{
+	color:lightgrey;
+	transition:0.5s ease;
+}
+.container{
+	margin:100px;
+}
+.title{
+	border:1px solid white;
+	background:#9932CC;
+	margin-bottom:100px;
+	color:white;
+	border-radius:10px 10px 0px 0px;
+}
+#Search{
+	font-size:20px;
+}
+.form-group label{
+	font-size:20px;
+	margin:30px 0px 30px 0px;
+}
+.form-group textarea{
+	font-size:30px;
+}
+
+
+footer{
+	color:white;
+	padding:2% 5% 1% 5%;
+	background:#9932CC;
+}
+footer h3{
+	font-size:30px;
+	padding:10px;
+}
+footer .fa{
+	color:white;
+	text-decoration:none;
+	font-size:30px;
+	padding:10px;
+}
+footer .fa:hover{
+	color:lightgrey;
+}
+footer .copyright{
+	margin-top:50px;
+}
+footer .copyright p{
+	font-size:10px;
+}
