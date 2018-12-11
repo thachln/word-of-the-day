@@ -14,7 +14,7 @@ public class MyBigNumberApplication implements IReceiver {
 		
 		String sum = mb.sum(args[0], args[1]);
 		
-		System.out.println("Result: " + sum);
+		System.out.println("Final step: " + sum);
 	}
 
 	@Override
