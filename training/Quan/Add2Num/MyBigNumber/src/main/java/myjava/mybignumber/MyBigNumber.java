@@ -27,7 +27,7 @@ public class MyBigNumber {
     public String sum(final String s1, final String s2) {
         // Buoc 1: lay do dai 2 chuoi
         // Phan khai bao
-
+        
         String result = "";
         String msg = "";// Chuoi msg se lam tham so cho ham send cua interface IReceiver
         int length1 = s1.length();// do dai chuoi thu 1
@@ -39,7 +39,7 @@ public class MyBigNumber {
         char c1;// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
-
+        
         // Lặp từ 0 đến max lần
         for (int i = 0; i < max; i++) {
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
@@ -58,6 +58,16 @@ public class MyBigNumber {
             } else {
                 c2 = '0';
             }
+            
+            // Kiểm tra từng kí tự của 2 chuỗi s1 và s2
+            if (Character.isLetter(c1) || Character.isDigit(c1)) {
+                throw new NumberFormatException();
+            }
+            
+            if (Character.isLetter(c2) || Character.isDigit(c2)) {
+                throw new NumberFormatException();
+            }
+            
 
             tong = (c1 - '0') + (c2 - '0') + nho;// chuyển kí tự thành số xong cộng cho số nhớ
             result = (tong % 10) + result;// Lấy kết quả tổng ở trên chia lấy dư cho 10 và ghép vào chuỗi kết quả
