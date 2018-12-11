@@ -63,7 +63,8 @@ public class MyBigNumber {
            
             // (tong - nho) + " + " + nho + " = " + tong + " . Write " + tong % 10;
             
-            msg = "Step " + (i + 1) + ": " + c1 + " + " + c2 + " = " + (tong - nho) + " + " + nho + " = " + tong + " . Write " + tong % 10;;
+            // Print each step 
+            msg = "Step " + (i + 1) + ": " + c1 + " + " + c2 + " = " + (tong - nho) + " + " + nho + " = " + tong + " . Write " + tong % 10;
             
             result = (tong % 10) + result;// Lấy kết quả tổng ở trên chia lấy dư cho 10 và ghép vào chuỗi kết quả
             
