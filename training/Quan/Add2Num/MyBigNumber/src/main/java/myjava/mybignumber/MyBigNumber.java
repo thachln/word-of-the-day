@@ -61,11 +61,11 @@ public class MyBigNumber {
             
             // Kiểm tra từng kí tự của 2 chuỗi s1 và s2
             if (Character.isLetter(c1) || Character.isDigit(c1)) {
-                throw new NumberFormatException();
+                throw new NumberFormatException();// Nếu c1 có chữ hoặc kí tự thì sẽ có NumberFormatException
             }
             
             if (Character.isLetter(c2) || Character.isDigit(c2)) {
-                throw new NumberFormatException();
+                throw new NumberFormatException();// Nếu c2 có chữ hoặc kí tự thì sẽ có NumberFormatException
             }
             
 
