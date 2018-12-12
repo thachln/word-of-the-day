@@ -40,6 +40,22 @@ public class MyBigNumber {
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
         
+        for (int i = 0; i < max; i++) {
+            // Kiểm tra từng kí tự của 2 chuỗi s1 và s2
+            
+            if (Character.isLetter(s1.charAt(i))) {
+                // Nếu chuỗi s1 có chữ hoặc kí tự thì sẽ có NumberFormatException
+                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s1 
+                                                + " không phải là số");
+            }
+            
+            if (Character.isLetter(s2.charAt(i))) {
+                // Nếu chuỗi s2 có chữ hoặc kí tự thì sẽ có NumberFormatException
+                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s2 
+                                                + " không phải là số");
+            }
+        }
+        
         // Lặp từ 0 đến max lần
         for (int i = 0; i < max; i++) {
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
@@ -58,16 +74,6 @@ public class MyBigNumber {
             } else {
                 c2 = '0';
             }
-            
-            // Kiểm tra từng kí tự của 2 chuỗi s1 và s2
-            if (Character.isLetter(c1)) {
-                throw new NumberFormatException();// Nếu c1 có chữ hoặc kí tự thì sẽ có NumberFormatException
-            }
-            
-            if (Character.isLetter(c2)) {
-                throw new NumberFormatException();// Nếu c2 có chữ hoặc kí tự thì sẽ có NumberFormatException
-            }
-            
 
             tong = (c1 - '0') + (c2 - '0') + nho;// chuyển kí tự thành số xong cộng cho số nhớ
             result = (tong % 10) + result;// Lấy kết quả tổng ở trên chia lấy dư cho 10 và ghép vào chuỗi kết quả
