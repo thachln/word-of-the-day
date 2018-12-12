@@ -67,7 +67,7 @@ public class MyBigNumber {
             }
         }
 
-        // Nếu hàm matcher.find() là đúng tức là trong chuỗi s1 có kí tự đặc biệt
+        // Nếu 2 hàm matcher1.find() và matcher2.find là đúng tức là trong chuỗi s1 và s2 có kí tự đặc biệt
         if (matcher1.find()) {
             throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi " + s1
                     + " không phải là số");
