@@ -37,6 +37,8 @@ class MyBigNumberTest implements IReceiver{
 	@Override
 	public void send(String msg) {
 		// TODO Auto-generated method stub
+		
+		
 	
 	}
 

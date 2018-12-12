@@ -1,5 +1,8 @@
 package myjava.mybignumber;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Tác giả:  Nguyễn Châu Thảo Quân.
  * DesCription.
@@ -27,35 +30,55 @@ public class MyBigNumber {
     public String sum(final String s1, final String s2) {
         // Buoc 1: lay do dai 2 chuoi
         // Phan khai bao
-        
+
         String result = "";
         String msg = "";// Chuoi msg se lam tham so cho ham send cua interface IReceiver
         int length1 = s1.length();// do dai chuoi thu 1
         int length2 = s2.length();// do dai chuoi thu 2
-        int max = (length1 > length2) ? length1 : length2;// lay do dau lon nhat giua a va b
+        final int max = (length1 > length2) ? length1 : length2;// lay do dau lon nhat giua a va b
         int nho = 0;// Khởi tạo số nhớ = 0 để khi cộng sẽ có vài trường hợp lớn hơn 9
         int pos1 = 0;// Vị trí chuỗi s1
         int pos2 = 0;// Vị trí chuỗi s2
         char c1;// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
-        
-        for (int i = 0; i < max; i++) {
-            // Kiểm tra từng kí tự của 2 chuỗi s1 và s2
-            
+        // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
+        Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+        final Matcher matcher1 = pattern1.matcher(s1);
+        Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+        final Matcher matcher2 = pattern1.matcher(s2);
+
+        // Kiểm tra từng kí tự của 2 chuỗi s1 và s2 có chữ không 
+        for (int i = 0; i < length1; i++) {
+
             if (Character.isLetter(s1.charAt(i))) {
                 // Nếu chuỗi s1 có chữ hoặc kí tự thì sẽ có NumberFormatException
-                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s1 
-                                                + " không phải là số");
-            }
-            
-            if (Character.isLetter(s2.charAt(i))) {
-                // Nếu chuỗi s2 có chữ hoặc kí tự thì sẽ có NumberFormatException
-                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s2 
-                                                + " không phải là số");
+                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s1
+                        + " không phải là số");
             }
         }
-        
+
+        for (int i = 0; i < length2; i++) {
+
+            if (Character.isLetter(s2.charAt(i))) {
+                // Nếu chuỗi s2 có chữ hoặc kí tự thì sẽ có NumberFormatException
+                throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi " + s2
+                        + " không phải là số");
+            }
+        }
+
+        // Nếu hàm matcher.find() là đúng tức là trong chuỗi s1 có kí tự đặc biệt
+        if (matcher1.find()) {
+            throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi " + s1
+                    + " không phải là số");
+        }
+
+        if (matcher2.find()) {
+            throw new NumberFormatException("Vị trí " + (matcher2.start() + 1) + " trong chuỗi " + s2
+                    + " không phải là số");
+        }
+
+
         // Lặp từ 0 đến max lần
         for (int i = 0; i < max; i++) {
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
