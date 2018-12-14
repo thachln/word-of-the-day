@@ -43,13 +43,14 @@ public class MyBigNumber {
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
         // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
-        Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+        Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~]");
         final Matcher matcher1 = pattern1.matcher(s1);
-        Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+        Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~]");
         final Matcher matcher2 = pattern1.matcher(s2);
+        int hieu = 0;
 
         // Kiểm tra từng kí tự của 2 chuỗi s1 và s2 có chữ không 
-        for (int i = 0; i < length1; i++) {
+        for (int i = 0; i < length1 || i < length2; i++) {
 
             if (Character.isLetter(s1.charAt(i))) {
                 // Nếu chuỗi s1 có chữ hoặc kí tự thì sẽ có NumberFormatException
@@ -67,7 +68,7 @@ public class MyBigNumber {
             }
         }
 
-        // Nếu 2 hàm matcher1.find() và matcher2.find là đúng tức là trong chuỗi s1 và s2 có kí tự đặc biệt
+        // Nếu hàm matcher.find() là đúng tức là trong chuỗi s1 có kí tự đặc biệt
         if (matcher1.find()) {
             throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi " + s1
                     + " không phải là số");
@@ -77,7 +78,15 @@ public class MyBigNumber {
             throw new NumberFormatException("Vị trí " + (matcher2.start() + 1) + " trong chuỗi " + s2
                     + " không phải là số");
         }
-
+        
+        // Kiểm tra số âm
+        if (s1.charAt(0) == '-') {
+            throw new NumberFormatException("Chưa hỗ trợ số âm s1: " + s1);
+        } 
+        
+        if (s2.charAt(0) == '-') {
+            throw new NumberFormatException("Chưa hỗ trợ số âm s2: " + s2);
+        }
 
         // Lặp từ 0 đến max lần
         for (int i = 0; i < max; i++) {
@@ -85,18 +94,8 @@ public class MyBigNumber {
             pos2 = length2 - i - 1;// cập nhật lại vị trí chuỗi s2
 
             // Xét vị trí của 2 chuỗi xem có >= 0 hay không
-            if (pos1 >= 0) {
-                c1 = s1.charAt(length1 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
-
-            } else {
-                c1 = '0';
-            }
-
-            if (pos2 >= 0) {
-                c2 = s2.charAt(length2 - i - 1);// Lấy kí tự ở vị trí cuối cùng của chuỗi
-            } else {
-                c2 = '0';
-            }
+            c1 = (pos1 >= 0) ? s1.charAt(length1 - i - 1) : '0';
+            c2 = (pos2 >= 0) ? s2.charAt(length2 - i - 1) : '0';
 
             tong = (c1 - '0') + (c2 - '0') + nho;// chuyển kí tự thành số xong cộng cho số nhớ
             result = (tong % 10) + result;// Lấy kết quả tổng ở trên chia lấy dư cho 10 và ghép vào chuỗi kết quả
@@ -107,8 +106,8 @@ public class MyBigNumber {
             this.ireceiver.send(msg);
         }
 
-        if (nho >= 1) {
-            result = 1 + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
+        if (nho > 0) {
+            result = nho + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
         }
 
         return result;// Trả về kết quả thu được

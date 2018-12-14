@@ -21,9 +21,9 @@ class MyBigNumberTest implements IReceiver{
 	@Test
 	public void testSum_N_2() {
 		MyBigNumber mb = new MyBigNumber(this);
-		String sum = mb.sum("123", "9");
+		String sum = mb.sum("123", "7");
         
-        assertEquals("132", sum);
+        assertEquals("130", sum);
 	}
 	
 	@Test
