@@ -48,9 +48,18 @@ public class MyBigNumber {
         Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~]");
         final Matcher matcher2 = pattern1.matcher(s2);
         int hieu = 0;
+        
+        // Kiểm tra số âm
+        if (s1.charAt(0) == '-') {
+            throw new NumberFormatException("Chưa hỗ trợ số âm s1: " + s1);
+        } 
+        
+        if (s2.charAt(0) == '-') {
+            throw new NumberFormatException("Chưa hỗ trợ số âm s2: " + s2);
+        }
 
         // Kiểm tra từng kí tự của 2 chuỗi s1 và s2 có chữ không 
-        for (int i = 0; i < length1 || i < length2; i++) {
+        for (int i = 0; i < length1; i++) {
 
             if (Character.isLetter(s1.charAt(i))) {
                 // Nếu chuỗi s1 có chữ hoặc kí tự thì sẽ có NumberFormatException
@@ -79,15 +88,6 @@ public class MyBigNumber {
                     + " không phải là số");
         }
         
-        // Kiểm tra số âm
-        if (s1.charAt(0) == '-') {
-            throw new NumberFormatException("Chưa hỗ trợ số âm s1: " + s1);
-        } 
-        
-        if (s2.charAt(0) == '-') {
-            throw new NumberFormatException("Chưa hỗ trợ số âm s2: " + s2);
-        }
-
         // Lặp từ 0 đến max lần
         for (int i = 0; i < max; i++) {
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
