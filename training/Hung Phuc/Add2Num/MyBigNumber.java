@@ -97,10 +97,12 @@ public class MyBigNumber {
 				
             tmp = d1 + d2 + mem;
 				
-            finalResult = (tmp % 10) + finalResult; // plus with finalResult by add it before finalResult 
+            finalResult = (tmp % 10) + finalResult; // plus with finalResult by add it before finalResult
+            
+            
             
             msg = "Step " + Step + ": " + d1 + " + " + d2 + " = " + (d1 + d2) + " + " 
-		+ mem + " = " + tmp + " . Write " + (tmp % 10) + " remember " + (mem / 10);
+		+ mem + " = " + tmp + " . Write " + (tmp % 10) + " remember " + (tmp / 10);
 		this.ireceiver.send(msg);
             
             Step ++; //increase step
