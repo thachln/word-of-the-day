@@ -1,4 +1,4 @@
-package Sum2Number;
+//package Sum2Number;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
