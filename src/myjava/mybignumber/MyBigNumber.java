@@ -30,8 +30,6 @@ class MyBigNumber
 			index1 = (len1 - i -1); // xac dinh vi tri chuoi s1 tu phai sang trai
 			index2 = (len2 - i -1); // xac dinh vi tri chuoi s2 tu phai sang trai
 			
-			//c1 = s1.charAt(index1);
-			//c2 = s2.charAt(index2);
 			c1 = (index1 >= 0) ? s1.charAt(index1) : '0'; // khi kiem tra den den het vi tri dau tien tu trai sang phai thi se  them '0' de 2 chuoi bang nhau
 			c2 = (index2 >= 0) ? s2.charAt(index2) : '0';
 
@@ -40,8 +38,8 @@ class MyBigNumber
 			
 			nho = (t / 10); // lay phan nguyen 0 or 1 neu du 1 se cong vao t
 
-			msg = "Buoc:" +(i+1)+    "   " +(c1-'0')+"   +  " +(c2-'0')+" = " + ( (c1-'0') + (c2 - '0') ) + " viet: " +(t % 10)+ 
-					"nho:  "+nho; 
+			msg = "Buoc:" +(i+1)+    "   " +(c1-'0')+"   +  " +(c2-'0')+" = " + ( (c1-'0') + (c2 - '0') ) + " viet:"+(t % 10)+ 
+					" nho:"+nho; 
 			this.ireceiver.send(msg);
 		}
 		if(nho != 0){
