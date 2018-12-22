@@ -4,4 +4,5 @@ Code download:
 Code version update detail:
 	a. Fix the empty string means zero.
 	b. the null value is still maintenance.
-	b. 2 matcher to check the special character is only 1 compiled pattern
+	c. 2 matcher to check the special character is only 1 compiled pattern.
+	d. The Log4J is still in process.
