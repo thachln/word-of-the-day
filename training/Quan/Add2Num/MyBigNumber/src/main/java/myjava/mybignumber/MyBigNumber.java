@@ -45,13 +45,15 @@ public class MyBigNumber {
         
         // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
         Pattern pattern = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
-        Matcher matcher1 = pattern.matcher(s1);
-        Matcher matcher2 = pattern.matcher(s2);
+        final Matcher matcher1 = pattern.matcher(s1);
+        final Matcher matcher2 = pattern.matcher(s2);
         
         if (s1.trim().isEmpty()) {
+            
             return s2;
         }
         if (s2.trim().isEmpty()) {
+            
             return s1;
         }
         
@@ -115,7 +117,7 @@ public class MyBigNumber {
         if (nho > 0) {
             result = nho + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
         }
-
+        
         return result;// Trả về kết quả thu được
     }
 }
