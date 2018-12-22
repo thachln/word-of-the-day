@@ -9,3 +9,7 @@ Lỗi code trong myworkspace:
   2.5 Dòng 10 có lỗi Unused @param tag for '<s2>'.; severity = warning: @param đặt sai vị trí: @param trong phần ghi chú java doc đặt không đúng vị trí. 
   2.8 Dòng 26 có lỗi Line contains a tab character.; severity = warning: dòng code ở dòng này có khoảng trắng, mấy dòng khác tương tự.
   2.12 Dòng 29 có lỗi Distance between variable 'maxLen' declaration and its first usage is 8, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value).; severity = warning: cách tốt nhất nên để biến ở dòng 29 làm biến final.
+  2.13 Dòng 59 có lỗi i; Mã lỗi = VAR_DECLARATION_NO_BEGIN_BLOCK: các phần khai báo tại dòng này không có phân chia theo cụm.
+  2.14 Dòng 106 có lỗi 'for' child has incorrect indentation level 16, expected level should be 12.; severity = warning: xuống dòng không ngay hàng.
+  2.15 Dòng 82 có lỗi No empty line be fore return statement.; Mã lỗi = NO_EMPTYLINE_BEFORE_RETURN: câu lệnh không xuống dòng.
+  2.16 Dòng 89 có lỗi index1; Mã lỗi = VAR_IN_LOOP tại biến index1: có khai báo biến trong câu lệnh.
