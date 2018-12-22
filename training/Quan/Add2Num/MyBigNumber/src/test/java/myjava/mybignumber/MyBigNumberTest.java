@@ -1,27 +1,143 @@
 package myjava.mybignumber;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.internal.bytebuddy.asm.Advice.Thrown;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
-class MyBigNumberTest implements IReceiver{
 
+class MyBigNumberTest implements IReceiver {
+	
 	@Test
     public void testSum_N_1() {
         MyBigNumber mb = new MyBigNumber(this);
-        String sum = mb.sum("1", "2");
+        String sum = mb.sum("", "123");
         
-        assertEquals("3", sum);
-        
-        String s = mb.sum("8", "2");
-        
-        assertEquals("10", s);
+        assertEquals("123", sum);
     }
 	
 	@Test
 	public void testSum_N_2() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("123", "");
+        assertEquals("123", sum);
+	}
+	
+	@Test
+	public void testSum_N_3() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("-1", "123");
+		});
+	}
+	
+	@Test
+	public void testSum_N_4() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("123", "-1");
+		});
+	}
+	
+	@Test
+	public void testSum_N_5() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("1a2", "123");
+		});
+	}
+	
+	@Test
+	public void testSum_N_6() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("123", "1a2");
+		});
+		
+	}
+	
+	@Test
+	public void testSum_N_7() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("1123", "2^2");
+		});
+	}
+	
+	@Test
+	public void testSum_N_8() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("2^2", "1123");
+		});
+	}
+	
+	@Test
+	public void testSum_N_9() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("2-1", "2");
+		});
+	}
+	
+	@Test
+	public void testSum_N_10() {
+		assertThrows(NumberFormatException.class, ()-> {
+			MyBigNumber mb = new MyBigNumber(this);
+			mb.sum("2", "2-1");
+		});
+	}
+	
+	@Test
+    public void testSum_N_11() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("1", "2");
+        
+        assertEquals("3", sum);
+    }
+	
+	@Test
+    public void testSum_N_12() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("2", "1");
+        
+        assertEquals("3", sum);
+    }
+	
+	@Test
+    public void testSum_N_13() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("2", "8");
+        
+        assertEquals("10", sum);
+    }
+	
+	@Test
+	public void testSum_N_14() {
+		MyBigNumber mb = new MyBigNumber(this);
+        String s = mb.sum("8", "2");
+        assertEquals("10", s);
+	}
+	
+	@Test
+    public void testSum_N_15() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("12", "8");
+        
+        assertEquals("20", sum);
+    }
+	
+	@Test
+	public void testSum_N_16() {
+		MyBigNumber mb = new MyBigNumber(this);
+        String s = mb.sum("8", "2");
+        assertEquals("10", s);
+	}
+	
+	@Test
+	public void testSum_N_17() {
 		MyBigNumber mb = new MyBigNumber(this);
 		String sum = mb.sum("123", "7");
         
@@ -29,49 +145,83 @@ class MyBigNumberTest implements IReceiver{
 	}
 	
 	@Test
-	public void testSum_N_3() {
+	public void testSum_N_18() {
 		MyBigNumber mb = new MyBigNumber(this);
-		String sum = mb.sum("111111111111111111111111111111", "222222222222222222222222222222");
+		String sum = mb.sum("7", "123");
         
-        assertEquals("333333333333333333333333333333", sum);
+        assertEquals("130", sum);
 	}
 	
 	@Test
-	public void testSum_N_4() {
-		
-		assertThrows(NumberFormatException.class, new Executable() {
-			
-			@Override
-			public void execute() throws Throwable {
-				// TODO Auto-generated method stub
-				MyBigNumber mb = new MyBigNumber(MyBigNumberTest.this);
-				String sum = mb.sum("1ab", "123");
-				
-			}
-		});
-		
+	public void testSum_N_19() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("123", "87");
+        
+        assertEquals("210", sum);
 	}
 	
 	@Test
-	public void testSum_N_5() {
-		assertThrows(NumberFormatException.class, new Executable() {
-			
-		@Override
-		public void execute() throws Throwable {
-				// TODO Auto-generated method stub
-				MyBigNumber mb = new MyBigNumber(MyBigNumberTest.this);
-				String sum = mb.sum("-1", "123");
-				
-			}
-		});
+	public void testSum_N_20() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("87", "123");
+        
+        assertEquals("210", sum);
 	}
-
+	
+	@Test
+	public void testSum_N_21() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("87", "123");
+        
+        assertEquals("210", sum);
+	}
+	
+	@Test
+	public void testSum_N_22() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("123","987");
+        
+        assertEquals("1110", sum);
+	}
+	
+	@Test
+	public void testSum_N_23() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("987","123");
+        
+        assertEquals("1110", sum);
+	}
+	
+	@Test
+	public void testSum_N_24() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("2222222222","1111111111");
+        
+        assertEquals("3333333333", sum);
+	}
+	
+	@Test
+	public void testSum_N_25() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("1111111111", "9999999999");
+        
+        assertEquals("11111111110", sum);
+	}
+	
+	@Test
+	public void testSum_N_26() {
+		MyBigNumber mb = new MyBigNumber(this);
+		String sum = mb.sum("9999999999", "1111111111");
+        
+        assertEquals("11111111110", sum);
+	}
+	
 	@Override
 	public void send(String msg) {
 		// TODO Auto-generated method stub
 		
-		
-	
 	}
+	
+	
 
 }

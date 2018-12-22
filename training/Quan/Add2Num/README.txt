@@ -1,0 +1,2 @@
+1. If you are using spring boot, you just need to copy the src and pom.xml into the project.
+2. If you aren't using spring boot, you go to MyBigNumber/src/main/java/myjava/mybignumber and MyBigNumber/src/test/java/myjav/mybignumber to copy the java file into your project

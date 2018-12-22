@@ -42,12 +42,18 @@ public class MyBigNumber {
         char c1;// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
+        
         // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
-        Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~]");
-        final Matcher matcher1 = pattern1.matcher(s1);
-        Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~]");
-        final Matcher matcher2 = pattern1.matcher(s2);
-        int hieu = 0;
+        Pattern pattern = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
+        Matcher matcher1 = pattern.matcher(s1);
+        Matcher matcher2 = pattern.matcher(s2);
+        
+        if (s1.trim().isEmpty()) {
+            return s2;
+        }
+        if (s2.trim().isEmpty()) {
+            return s1;
+        }
         
         // Kiểm tra số âm
         if (s1.charAt(0) == '-') {
@@ -76,7 +82,7 @@ public class MyBigNumber {
                         + " không phải là số");
             }
         }
-
+        
         // Nếu hàm matcher.find() là đúng tức là trong chuỗi s1 có kí tự đặc biệt
         if (matcher1.find()) {
             throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi " + s1
