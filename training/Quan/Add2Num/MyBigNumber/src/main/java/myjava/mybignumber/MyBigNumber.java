@@ -42,7 +42,6 @@ public class MyBigNumber {
         char c1;// kí tự c1 dùng để lấy kí tự cuối cùng của chuỗi s1
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int tong = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
-        
         // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
         Pattern pattern = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
         final Matcher matcher1 = pattern.matcher(s1);
@@ -55,6 +54,7 @@ public class MyBigNumber {
         if (s2.trim().isEmpty()) {
             
             return s1;
+            
         }
         
         // Kiểm tra số âm
