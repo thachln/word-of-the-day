@@ -1,0 +1,15 @@
+How to run the program:
+  1. Clone or download the code in github, the code is in training/Quan/Add2Num/Intellij ide
+  2. if you have created the spring boot project, you need to copy the folder src and file pom.xml to your project.
+  3. if you don't have created the spring boot project, you need to copy only the code in main/java/myjava/mybignumber and the unit test is in src/test/java/myjava/mybignumber
+  4. To run the jar file, first download the file on https://drive.google.com/drive/folders/1o3JuWiXuE1zc_5J1RKKodbToIvlQlS_x?usp=sharing and then open the cmd in training/Quan/Add2Num/Intellij ide/sum and type sum.cmd.
+Description
+  1. adding the null and the empty condition:
+if ((s1 == null) || (s1.trim().isEmpty())) {
+
+    return s2;
+ } else if ((s2 == null) || (s2.trim().isEmpty())) {
+     
+     return s1;
+}
+  2. The variable of declaration is the same language.
