@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+	
+	$_SESSION['SignedIn'] = FALSE;
+	
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -8,41 +11,47 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+	
+	$Email = $Password  = $ErrEmail = $ErrPassword = "";
+	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$Email = $_POST['Email'];
-		$password = $_POST['Password'];
-		
-		if (!$Email || !$password) {
-			echo "Please fill all Email and Password information. <a href='javascript: history.go(-1)'>Return</a>";
-			exit;
+		if(empty($_POST['Email'])) {
+			$ErrEmail = "Please fill Email";
 		}
 		
-		if (mysqli_num_rows(mysqli_query($conn,"SELECT Email, PassWord FROM user WHERE Email = '$Email'")) == 0) {
-			echo "This Email isn't existed. <a href='javascript: history.go(-1)'>Return</a>";
-			exit;
+		if(empty($_POST['Password'])) {
+			$ErrPassword = "Please fill Password";
 		}
 		
-		$Check = mysqli_fetch_array(mysqli_query($conn,"SELECT Email, PassWord FROM user WHERE Email = '$Email'"));
-		
-		if ($password != $Check['PassWord']) {
-			echo "Incorrect PassWord. <a href='javascript: history.go(-1)'>Return</a>";
-			exit;
-		}
-		
-		$UserID = "";
-		$user = "SELECT ID FROM user WHERE Email = '$Email'"; 
-		$result1 = $conn->query($user);
-		if($result1->num_rows > 0){
-			while($row = $result1->fetch_assoc()){
-				$UserID = $row['ID'];
+		if((!empty($_POST['Email'])) && (!empty($_POST['Password']))) {
+			$Email = $_POST['Email'];
+			$Password = $_POST['Password'];
+			
+			if (mysqli_num_rows(mysqli_query($conn,"SELECT Email, PassWord FROM user WHERE Email = '$Email'")) == 0) {
+				$ErrEmail = "Email doesn't exist";
+			}
+			else {
+				$Check = mysqli_fetch_array(mysqli_query($conn,"SELECT Email, PassWord FROM user WHERE Email = '$Email'"));
+				if ($Password != $Check['PassWord']) {
+					$ErrPassword = "Password wrong! Please try again";
+				}
+				else {
+					$UserID = "";
+					$user = "SELECT ID FROM user WHERE Email = '$Email'"; 
+					$result1 = $conn->query($user);
+					if($result1->num_rows > 0) {
+						while($row = $result1->fetch_assoc()) {
+							$UserID = $row['ID'];
+						}
+					}
+					$_SESSION['UserID'] = $UserID;
+					$_SESSION['Email'] = $Email;
+					$_SESSION['SignedIn'] = TRUE;
+					header('location:HomePage.php');
+				}
 			}
 		}
-		$_SESSION['UserID'] = $UserID;
-		$_SESSION['Email'] = $Email;
-		echo "Hi " . $Email . ". You have Sign in successful click here to move to HomePage.<a href='HomePage.php'>Home page </a>";
-		die();
-	}	
-
+	}
 ?>
 
 
@@ -67,10 +76,12 @@
 						<div class="form-group">
 							<label for="Email"><b>Email address:</b></label>
 							<input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp" placeholder="Enter email">
+							<p class="text-warning"><?php echo $ErrEmail;?></p>
 						</div>
 						<div class="form-group">
 							<label for="Password"><b>Password:</b></label>
 							<input type="password" class="form-control" id="Password" name="Password" placeholder="Enter password">
+							<p class="text-warning"><?php echo $ErrPassword;?></p>
 						</div>
 						<button type="submit" class="btn btn-success btn-block" name="SignIn">Sign in</button>
 						<a href = "SignUp.php"><small class="form-text text-muted">Don't have account ? Click here</small></a>

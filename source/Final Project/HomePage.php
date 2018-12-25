@@ -1,6 +1,10 @@
 <?php
 	$page = 'Home';
 	session_start();
+	
+	if(!isset($_SESSION['SignedIn'])){
+		header('location:SignedIn.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
