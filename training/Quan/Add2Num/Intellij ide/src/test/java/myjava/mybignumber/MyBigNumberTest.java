@@ -160,10 +160,8 @@ public class MyBigNumberTest implements IReceiver{
     @Test(expected = NumberFormatException.class)
     public void testSum_N_22() {
         MyBigNumber mb = new MyBigNumber(this);
-       mb.sum("123","-87");
+        mb.sum("123","-87");
     }
-
-
 
     @Override
     public void send(String msg) {

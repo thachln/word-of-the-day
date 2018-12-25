@@ -39,8 +39,8 @@ public class MyBigNumber {
         }
 
         // Buoc 1: lay do dai 2 chuoi
-        // Phan khai bao
 
+        // Phan khai bao
         String result = "";
         String msg = "";// Chuoi msg se lam tham so cho ham send cua interface IReceiver
         int length1 = s1.length();// do dai chuoi thu 1
@@ -59,23 +59,23 @@ public class MyBigNumber {
 
         // Kiểm tra số âm
         if (s1.charAt(0) == '-') {
-            throw new NumberFormatException("Chua ho tro so am s1: " + s1);
+            throw new NumberFormatException("Not support the negative number s1: " + s1);
         }
 
         if (s2.charAt(0) == '-') {
-            throw new NumberFormatException("Chua ho tro so am s2: " + s2);
+            throw new NumberFormatException("Not support the negative number s2: " + s2);
         }
 
         // Kiểm tra chữ trong chuỗi s1 và chuỗi s2
         for (int i = 0; i < length1; i++) {
             if (Character.isLetter(s1.charAt(i))) {
-                throw new NumberFormatException("Loi ở tham so s1 tai vi tri "
+                throw new NumberFormatException("The error of position of s1 "
                         + (i + 1) + ": " + s1.charAt(i));
             }
 
             for (int j = 0; j < length2; j++) {
                 if (Character.isLetter(s2.charAt(j))) {
-                    throw new NumberFormatException("Loi ở tham so s2 tai vi tri "
+                    throw new NumberFormatException("The error of position of s2 "
                             + (j + 1) + ": " + s2.charAt(j));
                 }
             }
@@ -83,16 +83,17 @@ public class MyBigNumber {
 
         // Nếu hàm matcher.find() là đúng tức là trong chuỗi s1 có kí tự đặc biệt
         if (matcher1.find()) {
-            throw new NumberFormatException("Vi tri " + (matcher1.start() + 1) + " trong chuoi " + s1
-                    + " khong phai la so");
+            throw new NumberFormatException("Position " + (matcher1.start() + 1) + " of string " + s1
+                    + " is not a number");
         }
 
         if (matcher2.find()) {
-            throw new NumberFormatException("Vi tri " + (matcher2.start() + 1) + " trong chuoi " + s2
-                    + " khong phai la so");
+            throw new NumberFormatException("Position " + (matcher2.start() + 1) + " of string " + s2
+                    + " is not a number");
         }
 
         for (int i = 0; i < max; i++) {
+
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
             pos2 = length2 - i - 1;// cập nhật lại vị trí chuỗi s2
 
@@ -105,8 +106,7 @@ public class MyBigNumber {
             remember = sum / 10;// Cập nhật lại số nhớ
 
             msg = "Step " + (i + 1) + ": " + c1 + " + " + c2 + " = "
-                    + (sum - remember) + " + " + remember + " = " + sum
-                    + " . Write " + (sum % 10) + " remember " + remember;
+                    + sum + " . Write " + (sum % 10) + " remember " + remember;
             this.ireceiver.send(msg);
         }
 
