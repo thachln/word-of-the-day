@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2018 at 10:10 AM
+-- Generation Time: Dec 26, 2018 at 06:01 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -80,18 +80,19 @@ CREATE TABLE `user` (
   `Email` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `PassWord` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `Phone` varchar(20) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `DB` date NOT NULL
+  `DB` date NOT NULL,
+  `DateTimeCreated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Name`, `Email`, `PassWord`, `Phone`, `DB`) VALUES
-(1, 'Nguyen Hung Phuc', 'hungphucnguyen1998@gmail.com', 'haloman1998', '0723737108', '1998-08-14'),
-(2, 'Nguyen Chau Thao Quan', 'thaoquannguyenchau1996@gmail.com', 'Quan1996', '0938706433', '1996-08-11'),
-(3, 'Nguyen Trung Ngoc', 'ngocpasal@gmail.com', 'ngoc763952', '0393781055', '1997-11-23'),
-(4, 'Ho Tan Viet', 'viet98@gmail.com', '123456789', '12355566', '1998-08-14');
+INSERT INTO `user` (`ID`, `Name`, `Email`, `PassWord`, `Phone`, `DB`, `DateTimeCreated`) VALUES
+(1, 'Nguyen Hung Phuc', 'hungphucnguyen1998@gmail.com', 'haloman1998', '0723737108', '1998-08-14', '2018-12-20 10:00:00'),
+(2, 'Nguyen Chau Thao Quan', 'thaoquannguyenchau1996@gmail.com', 'Quan1996', '0938706433', '1996-08-11', '2018-12-22 17:30:10'),
+(3, 'Nguyen Trung Ngoc', 'ngocpasal@gmail.com', 'ngoc763952', '0393781055', '1997-11-23', '2018-12-22 18:10:03'),
+(4, 'Ho Tan Viet', 'viet98@gmail.com', '1234', '12355566', '1998-10-12', '2018-12-26 11:50:22');
 
 --
 -- Indexes for dumped tables
@@ -123,19 +124,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `english`
 --
 ALTER TABLE `english`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
