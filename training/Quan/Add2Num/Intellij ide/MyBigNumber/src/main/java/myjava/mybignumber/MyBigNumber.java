@@ -106,7 +106,7 @@ public class MyBigNumber {
             remember = sum / 10;// Cập nhật lại số nhớ
 
             msg = "Step " + (i + 1) + ": " + c1 + " + " + c2 + " = "
-                    + sum + " . Write " + (sum % 10) + " remember " + remember;
+                    + sum + " . Write " + (sum % 10) + " remember " + remember + ". Current Result: " + result;
             this.ireceiver.send(msg);
         }
 
