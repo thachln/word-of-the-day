@@ -1,5 +1,14 @@
 <?php
-session_start();
+	$page = "Upload";
+	session_start();
+	if(($_SESSION['SignedIn'])== FALSE){
+		header('location:SignIn.php');
+	}
+?>
+
+
+<?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";

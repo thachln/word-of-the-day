@@ -84,7 +84,7 @@
 							<p class="text-warning"><?php echo $ErrPassword;?></p>
 						</div>
 						<button type="submit" class="btn btn-success btn-block" name="SignIn">Sign in</button>
-						<a href = "SignUp.php"><small class="form-text text-muted">Don't have account ? Click here</small></a>
+						<a href = "SignUp.php"><small class="form-text text-muted">Don't have account yet? Click here</small></a>
 						
 					</form>
 				</section>

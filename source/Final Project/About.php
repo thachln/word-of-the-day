@@ -1,6 +1,9 @@
 <?php
 	$page = 'About';
 	session_start();
+	if(($_SESSION['SignedIn'])== FALSE){
+		header('location:SignIn.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

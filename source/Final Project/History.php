@@ -1,6 +1,10 @@
 <?php
 $page = 'Profile';
-session_start(); 
+session_start();
+
+if(($_SESSION['SignedIn'])== FALSE){
+		header('location:SignIn.php');
+	} 
 ?>
 
 

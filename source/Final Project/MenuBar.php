@@ -1,3 +1,4 @@
+<!--Code to get the Name of user and put it on menubar-->
 <?php
 $Email = $_SESSION['Email'];
 $servername = "localhost";
@@ -17,6 +18,18 @@ $result = $conn->query($sql);
 			$UserName = $row['Name'];
 		}
 	}
+?>
+
+<!--Code for SignOut-->
+<?php
+function SignOut() {
+	session_destroy();
+	header('location:SignIn.php');
+}
+
+  if (isset($_GET['SignOut'])) {
+    SignOut();
+  }
 ?>
 
 <meta charset="utf-8">
@@ -59,7 +72,7 @@ $result = $conn->query($sql);
 			</ul>
 			<ul class="navbar-nav navbar">
 				<li class="nav-item"><a href="Profile.php" id="active"><small class="form-text"><?php echo $UserName ;?></small></a></li>
-				<li class="nav-item"><a href="SignIn.php">SignOut</a></li>
+				<li class="nav-item"><a href="MenuBar.php?SignOut=true">SignOut</a></li>
 			</ul>
 		</div>
 </nav>

@@ -49,16 +49,21 @@
 		}
 		
 		if ((!empty($Name)) && (!empty($Email)) && (!empty($PassWord)) && (!empty($Phone)) && (!empty($DB))){
-			$sql = "INSERT INTO user (Name, Email, PassWord ,Phone ,DB)
-			VALUES ('$Name','$Email','$PassWord','$Phone','$DB')";
-			if ($conn->query($sql) === TRUE) {
-				echo "<p>Your account created successfully</p>";
-				echo "<p>Please Sign In by your new account <a href='SignIn.php'>SignIn </a></p>";
-			} 	
-			else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
+			$sql1 = "SELECT Email FROM user WHERE Email = '$Email'";
+			$result1 = $conn->query($sql1);
+			if($result1->num_rows > 0) {
+				$ErrEmail = "This Email exist!";
 			}
-			die();
+			else{
+				$sql2 = "INSERT INTO user ( Name, Email, PassWord , Phone , DB, DateTimeCreated)
+				VALUES ( '$Name', '$Email', '$PassWord', '$Phone', '$DB', NOW())";
+				if ($conn->query($sql2) === TRUE) {
+					header('location:SignIn.php');
+				} 	
+				else {
+					echo "Error: " . $sql2 . "<br>" . $conn->error;
+				}
+			}					
 		}
 	}
 ?>
@@ -102,7 +107,7 @@
 							<input type="password" class="form-control" id="PassWord" name="PassWord" placeholder="Enter password here..">
 							<p class="text-warning"><?php echo $ErrPass;?></p>
 						</div>
-						<button type="submit" class="btn btn-success btn-block" name="SignUp">Sign up</button>
+						<button type="submit" class="btn btn-success btn-block" name="SignUp">Accept</button>
 						
 					</form>
 				</section>

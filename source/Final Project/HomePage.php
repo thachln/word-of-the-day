@@ -1,9 +1,9 @@
 <?php
+	
 	$page = 'Home';
 	session_start();
-	
-	if(!isset($_SESSION['SignedIn'])){
-		header('location:SignedIn.php');
+	if(($_SESSION['SignedIn'])== FALSE){
+		header('location:SignIn.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -24,6 +24,7 @@
 	<div>
 	<?php include'MenuBar.php';?>
 	</div>
+	
 	<!--Container-->
 	<div id="home">
 		<div class="landing-text">
@@ -36,6 +37,7 @@
 		<div class="title"><h1 class = "text-center">Introduction</h1></div>
 		<h3 class="text-center">This website is using for learning English and you can enter what word you want to search . About the cost : It's Free for use</h3>
 	</div>
+	
 	<!--Footer-->
 	<div>
 	<?php include'Footer.php';?>

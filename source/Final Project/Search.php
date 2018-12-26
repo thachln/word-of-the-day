@@ -1,6 +1,10 @@
 <!--Code to change the active page on menu bar-->
 <?php
 	$page = 'Search';
+	
+	if(($_SESSION['SignedIn'])== FALSE){
+		header('location:SignIn.php');
+	}
 ?>
 
 <!--Code to check input word-->
