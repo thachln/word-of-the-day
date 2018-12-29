@@ -24,15 +24,14 @@ public class MyBigNumber {
     /**
      * This is function for sum.
      *
-     * @param s1 is first string.
-     * @param s2 is second string.
+     * @param str1 is first string.
+     * @param str2 is second string.
      * @return sum of s1 and s2.
      */
     
-    public String sum(final String s1,final String s2) { 
-        int len1 = s1.length(); 
-        int len2 = s2.length();
-        final int maxLen = Math.max(len1,len2);
+    public String sum(final String str1,final String str2) {
+        String s1 = str1; //Copy the value of str1 
+        String s2 = str2; //Copy the value of str2
         char c1; //to save char of digit of s1
         char c2; //to save char of digit of s2
         int d1; //value of c1 in integer
@@ -50,7 +49,22 @@ public class MyBigNumber {
         Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
         final Matcher matcher2 = pattern1.matcher(s2);
 
-        //Code to check user input
+        //////Code to check user input
+        
+        ////Check user input empty string
+        String x = "null"; // To check if user enter null
+        
+        if ((s1.isEmpty()) || (s1.equals(x))) {
+            s1 = "0";
+        }
+        
+        if ((s2.isEmpty()) || (s2.equals(x))) {
+            s2 = "0";
+        }
+        
+        int len1 = s1.length(); 
+        int len2 = s2.length();
+        final int maxLen = Math.max(len1,len2);
 
         ////Check if user enter negative number
         if (len1 > 0) {
@@ -92,22 +106,6 @@ public class MyBigNumber {
             + " not a number");
         }
 
-        ////Check user input empty string
-        if (s1.isEmpty() && !s2.isEmpty()) {
-
-            return s2;
-        }
-        
-        if (!s1.isEmpty() && s2.isEmpty()) {
-
-            return s1;
-        }
-        
-        if (s1.isEmpty() && s2.isEmpty()) {
-
-            return "0";
-        }
-
         ////////This Code for sum
 
         for (int i = 0; i < maxLen; i++) {
@@ -124,9 +122,8 @@ public class MyBigNumber {
 
             finalResult = (tmp % 10) + finalResult; // plus with finalResult by add it before finalResult
 
-            msg = "Step " + step + ": " + d1 + " + " + d2 + " = " + (d1 + d2) + " + " 
-                + mem + " = " + tmp + " . Write " + (tmp % 10) + " remember " + (tmp / 10);
-            this.ireceiver.send(msg);
+            msg = msg + "Step " + step + ": " + d1 + " + " + d2 + " = " + (d1 + d2) + " + " 
+                + mem + " = " + tmp + " . Write " + (tmp % 10) + " remember " + (tmp / 10) + "\n";
 
             step ++; //increase step
             
@@ -137,9 +134,9 @@ public class MyBigNumber {
         if (mem == 1) { 
             finalResult = 1 + finalResult;
 
-            msg = "Step " + step + ": Write down 1 and result is " + finalResult; 
-            this.ireceiver.send(msg);
+            msg = msg + "Step " + step + ": Write down 1 and result is " + finalResult; 
         }
+        this.ireceiver.send(msg);
 
         return finalResult;
     }
