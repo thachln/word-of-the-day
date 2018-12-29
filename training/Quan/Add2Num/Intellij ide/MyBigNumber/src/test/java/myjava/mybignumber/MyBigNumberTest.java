@@ -2,7 +2,7 @@ package myjava.mybignumber;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MyBigNumberTest implements IReceiver{
 
@@ -183,6 +183,28 @@ public class MyBigNumberTest implements IReceiver{
         String sum = mb.sum(" ", " ");
         assertEquals("0", sum);
     }
+
+    @Test
+    public void testSum_N_26() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("null", "null");
+        assertEquals("0", sum);
+    }
+
+    @Test
+    public void testSum_N_27() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("123", "null");
+        assertEquals("123", sum);
+    }
+
+    @Test
+    public void testSum_N_28() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("null", "123");
+        assertEquals("123", sum);
+    }
+
 
     @Override
     public void send(String msg) {
