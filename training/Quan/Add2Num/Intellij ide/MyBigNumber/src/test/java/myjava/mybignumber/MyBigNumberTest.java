@@ -163,6 +163,27 @@ public class MyBigNumberTest implements IReceiver{
         mb.sum("123","-87");
     }
 
+    @Test
+    public void testSum_N_23() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum("", "");
+        assertEquals("0", sum);
+    }
+
+    @Test
+    public void testSum_N_24() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum(null, null);
+        assertEquals("0", sum);
+    }
+
+    @Test
+    public void testSum_N_25() {
+        MyBigNumber mb = new MyBigNumber(this);
+        String sum = mb.sum(" ", " ");
+        assertEquals("0", sum);
+    }
+
     @Override
     public void send(String msg) {
 

@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Tác giả:  Nguyễn Châu Thảo Quân.
+ * Tác giả: Nguyễn Châu Thảo Quân.
  * DesCription.
  * Class MyBigNumber là lớp để Cộng 2 số lớn bằng 2 chuỗi.
  * Hàm sum trong Class MyBigNumber là hàm để thực hiện phép cộng 2 chuỗi số
@@ -30,15 +30,28 @@ public class MyBigNumber {
 
     public String sum(final String s1, final String s2) {
         // Xét giá trị null và khoảng trắng
-        if ((s1 == null) || (s1.trim().isEmpty())) {
+        // Nếu 1 trong 2 tham số là null hoặc rỗng thì trả về tham số còn lại
+        if ((s1 == null) && (s2 == null)) {
+
+            return "0";
+        } else if (s1 == null) {
 
             return s2;
-        } else if ((s2 == null) || (s2.trim().isEmpty())) {
+        } else if (s2 == null) {
 
             return s1;
         }
 
-        // Buoc 1: lay do dai 2 chuoi
+        if ((s1.trim().isEmpty()) && (s2.trim().isEmpty())) {
+
+            return "0";
+        } else if (s1.trim().isEmpty()) {
+
+            return s2;
+        } else if (s2.trim().isEmpty()) {
+
+            return s1;
+        }
 
         // Phan khai bao
         String result = "";
@@ -93,7 +106,6 @@ public class MyBigNumber {
         }
 
         for (int i = 0; i < max; i++) {
-
             pos1 = length1 - i - 1;// cập nhật lại vị trí chuỗi s1
             pos2 = length2 - i - 1;// cập nhật lại vị trí chuỗi s2
 
@@ -112,6 +124,8 @@ public class MyBigNumber {
 
         if (remember > 0) {
             result = remember + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
+            this.ireceiver.send("1 + 0 = 1. Current result: " + result);
+
         }
 
         return result;// Trả về kết quả thu được

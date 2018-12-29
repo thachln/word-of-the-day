@@ -8,7 +8,7 @@ public class MyBigNumberApplication implements IReceiver{
 
     public static void main(String[] args) {
         SpringApplication.run(MyBigNumberApplication.class, args);
-        System.out.println("Final step: " +
+        System.out.println("Final result: " +
                 (new MyBigNumber(new MyBigNumberApplication())).sum(args[0],args[1]));
     }
 
