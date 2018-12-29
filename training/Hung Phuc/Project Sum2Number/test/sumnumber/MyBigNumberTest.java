@@ -139,6 +139,74 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
     }
     
+    ////Test when string1 contain negative number
+    @Test(expected=NumberFormatException.class)
+    public void testSum_N12() {
+        System.out.println("Test12");
+        String s1 = "-12";
+        String s2 = "12";
+        MyBigNumber instance = new MyBigNumber(this);
+        String result = instance.sum(s1, s2);
+    }
+    
+    ////Test when string2 contain negative number
+    @Test(expected=NumberFormatException.class)
+    public void testSum_N13() {
+        System.out.println("Test13");
+        String s1 = "1234";
+        String s2 = "-1";
+        MyBigNumber instance = new MyBigNumber(this);
+        String result = instance.sum(s1, s2);
+    }
+    
+    ////Test when user enter null in string 1
+    @Test
+    public void testSum_N14() {
+        System.out.println("Test14");
+        String s1 = "null";
+        String s2 = "1234";
+        MyBigNumber instance = new MyBigNumber(this);
+        String expResult = "1234";
+        String result = instance.sum(s1, s2);
+        assertEquals(expResult, result);
+    }
+    
+    ////Test when user enter null in string 2
+    @Test
+    public void testSum_N15() {
+        System.out.println("Test15");
+        String s1 = "123";
+        String s2 = "null";
+        MyBigNumber instance = new MyBigNumber(this);
+        String expResult = "123";
+        String result = instance.sum(s1, s2);
+        assertEquals(expResult, result);
+    }
+    
+    ////Test when user enter null in both two strings 
+    @Test
+    public void testSum_N16() {
+        System.out.println("Test16");
+        String s1 = "null";
+        String s2 = "null";
+        MyBigNumber instance = new MyBigNumber(this);
+        String expResult = "0";
+        String result = instance.sum(s1, s2);
+        assertEquals(expResult, result);
+    }
+    
+    ////Test when user enter null in string 1 and empty in string 2
+    @Test
+    public void testSum_N17() {
+        System.out.println("Test17");
+        String s1 = "null";
+        String s2 = "";
+        MyBigNumber instance = new MyBigNumber(this);
+        String expResult = "0";
+        String result = instance.sum(s1, s2);
+        assertEquals(expResult, result);
+    }
+    
     @Override
 	public void send(String msg) {
 		// TODO Auto-generated method stub
