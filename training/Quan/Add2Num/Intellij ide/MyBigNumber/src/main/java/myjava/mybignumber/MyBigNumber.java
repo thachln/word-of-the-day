@@ -69,19 +69,6 @@ public class MyBigNumber {
         Pattern pattern = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
         final Matcher matcher1 = pattern.matcher(s1);
         final Matcher matcher2 = pattern.matcher(s2);
-        final String nullStr = "null";// Khởi tạo chuỗi chứa chuỗi null
-
-        // Kiểm tra chuỗi null của 2 tham số
-        if ((s1.trim().equalsIgnoreCase(nullStr)) && (s2.trim().equalsIgnoreCase(nullStr))) {
-
-            return "0";
-        } else if (s1.trim().equalsIgnoreCase(nullStr)) {
-
-            return s2;
-        } else if (s2.trim().equalsIgnoreCase(nullStr)) {
-
-            return s1;
-        }
 
         // Kiểm tra số âm
         if (s1.charAt(0) == '-') {
