@@ -187,20 +187,25 @@ public class MyBigNumberTest implements IReceiver{
     @Test(expected = NumberFormatException.class)
     public void testSum_N_26() {
         MyBigNumber mb = new MyBigNumber(this);
-        mb.sum("null", "null");
+        mb.sum(null, "a1234");
     }
 
     @Test(expected = NumberFormatException.class)
     public void testSum_N_27() {
         MyBigNumber mb = new MyBigNumber(this);
-        mb.sum("123", "null");
+       mb.sum("a1234", null);
     }
 
     @Test(expected = NumberFormatException.class)
     public void testSum_N_28() {
         MyBigNumber mb = new MyBigNumber(this);
-        String sum = mb.sum("null", "123");
-        assertEquals("123", sum);
+        mb.sum(" ", "a1234");
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testSum_N_29() {
+        MyBigNumber mb = new MyBigNumber(this);
+        mb.sum("a1234", " ");
     }
 
 

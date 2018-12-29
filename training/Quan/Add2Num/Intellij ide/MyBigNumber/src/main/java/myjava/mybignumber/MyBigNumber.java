@@ -29,26 +29,53 @@ public class MyBigNumber {
      */
 
     public String sum(final String s1, final String s2) {
-        // Xét giá trị null và khoảng trắng
-        // Nếu 1 trong 2 tham số là null hoặc rỗng thì trả về tham số còn lại
+        // Xét cả 2 tham số đều là null
         if ((s1 == null) && (s2 == null)) {
 
             return "0";
-        } else if (s1 == null) {
+        }
+        // Xét chỉ có 1 tham số là null
+        // Nếu 1 trong 2 tham số là null thì trả về tham số còn lại
+        if (s1 == null) {
+            for (int i = 0; i < s2.length(); i++) {
+                if (Character.isLetter(s2.charAt(i))) {
+                    throw new NumberFormatException("Error in parameter s2 in position " + (i + 1) + " " + s2.charAt(i));
+                }
+            }
 
             return s2;
+
         } else if (s2 == null) {
+            for (int i = 0; i < s1.length(); i++) {
+                if (Character.isLetter(s1.charAt(i))) {
+                    throw new NumberFormatException("Error in parameter s1 in position " + (i + 1) + " " + s1.charAt(i));
+                }
+            }
 
             return s1;
+
         }
 
+        // Xét cả 2 tham số đều là rỗng hoặc chỉ có 1 tham số là rỗng
+        // Nếu cả 2 tham số là rỗng thì trả về 0
+        // Nếu 1 trong 2 tham số là rỗng thì trả về tham số còn lại
         if ((s1.trim().isEmpty()) && (s2.trim().isEmpty())) {
 
             return "0";
         } else if (s1.trim().isEmpty()) {
+            for (int i = 0; i < s2.length(); i++) {
+                if (Character.isLetter(s2.charAt(i))) {
+                    throw new NumberFormatException("Error in parameter s2 in position " + (i + 1) + " " + s2.charAt(i));
+                }
+            }
 
             return s2;
         } else if (s2.trim().isEmpty()) {
+            for (int i = 0; i < s1.length(); i++) {
+                if (Character.isLetter(s1.charAt(i))) {
+                    throw new NumberFormatException("Error in parameter s1 in position " + (i + 1) + " " + s1.charAt(i));
+                }
+            }
 
             return s1;
         }
@@ -66,9 +93,9 @@ public class MyBigNumber {
         char c2;// kí tự c2 dùng để lấy kí tự cuối cùng của chuỗi s2
         int sum = 0;// Khởi tạo biến tổng = 0 để cộng 2 kí tự cuối cùng lại với nhau
         // Dùng Matcher kết hợp với pattern để tìm các kí tự đặc biết trong 2 chuỗi
-        Pattern pattern = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
-        final Matcher matcher1 = pattern.matcher(s1);
-        final Matcher matcher2 = pattern.matcher(s2);
+        Pattern specialChar = Pattern.compile("[:/!@#$%&*^()_+=|<>?{}\\\\[\\\\]~-]");
+        final Matcher matcher1 = specialChar.matcher(s1);
+        final Matcher matcher2 = specialChar.matcher(s2);
 
         // Kiểm tra số âm
         if (s1.charAt(0) == '-') {
@@ -82,15 +109,13 @@ public class MyBigNumber {
         // Kiểm tra chữ trong chuỗi s1 và chuỗi s2
         for (int i = 0; i < length1; i++) {
             if (Character.isLetter(s1.charAt(i))) {
-                throw new NumberFormatException("The error of position of s1 "
-                        + (i + 1) + ": " + s1.charAt(i));
+                throw new NumberFormatException("Error in parameter s1 in position " + (i + 1) + " " + s1.charAt(i));
             }
+        }
 
-            for (int j = 0; j < length2; j++) {
-                if (Character.isLetter(s2.charAt(j))) {
-                    throw new NumberFormatException("The error of position of s2 "
-                            + (j + 1) + ": " + s2.charAt(j));
-                }
+        for (int i = 0; i < length2; i++) {
+            if (Character.isLetter(s2.charAt(i))) {
+                throw new NumberFormatException("Error in parameter s2 in position " + (i + 1) + " " + s2.charAt(i));
             }
         }
 
