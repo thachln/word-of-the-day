@@ -2,3 +2,4 @@
 -File IReceiver.java is interface
 -File TimeRun.java is for show how much time program need to sum 2 number contain 100 character
 -File Display is for user interface
+-If you want to see my UI , you just open my project on netbean and then click button Run , the interface will appear and you can type number in the empty space
