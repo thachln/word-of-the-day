@@ -38,22 +38,10 @@ public class MyBigNumber {
         // Xét chỉ có 1 tham số là null
         // Nếu 1 trong 2 tham số là null thì trả về tham số còn lại
         if (s1 == null) {
-            for (int i = 0; i < s2.length(); i++) {
-                if (Character.isLetter(s2.charAt(i))) {
-                    throw new NumberFormatException("Error in parameter s2 in position "
-                            + (i + 1) + " " + s2.charAt(i));
-                }
-            }
 
             return s2;
 
         } else if (s2 == null) {
-            for (int i = 0; i < s1.length(); i++) {
-                if (Character.isLetter(s1.charAt(i))) {
-                    throw new NumberFormatException("Error in parameter s1 in position "
-                            + (i + 1) + " " + s1.charAt(i));
-                }
-            }
 
             return s1;
 
@@ -66,21 +54,9 @@ public class MyBigNumber {
 
             return "0";
         } else if (s1.trim().isEmpty()) {
-            for (int i = 0; i < s2.length(); i++) {
-                if (Character.isLetter(s2.charAt(i))) {
-                    throw new NumberFormatException("Error in parameter s2 in position "
-                            + (i + 1) + " " + s2.charAt(i));
-                }
-            }
 
             return s2;
         } else if (s2.trim().isEmpty()) {
-            for (int i = 0; i < s1.length(); i++) {
-                if (Character.isLetter(s1.charAt(i))) {
-                    throw new NumberFormatException("Error in parameter s1 in position "
-                            + (i + 1) + " " + s1.charAt(i));
-                }
-            }
 
             return s1;
         }
