@@ -1,1 +1,2 @@
-This is my project for sum 2 number in string
+In src folder ,it contains source code for my project such as : MyBigNumber.java , IReceiver.java , MyBigNumberDisplay.form ...
+In test folder , it contains all test case for my code
