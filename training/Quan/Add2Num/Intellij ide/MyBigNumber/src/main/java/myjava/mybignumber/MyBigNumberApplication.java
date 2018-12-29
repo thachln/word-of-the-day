@@ -9,7 +9,7 @@ public class MyBigNumberApplication implements IReceiver{
     public static void main(String[] args) {
         SpringApplication.run(MyBigNumberApplication.class, args);
         System.out.println("Final result: " +
-                (new MyBigNumber(new MyBigNumberApplication())).sum(null,"a1234"));
+                (new MyBigNumber(new MyBigNumberApplication())).sum(args[0],args[1]));
     }
 
     @Override
